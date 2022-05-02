@@ -35,7 +35,8 @@ jobs:
 
       - name: Running the command
         run: |
-          npm install node-fetch@2 nodemailer
+          npm install node-fetch@2
+          npm i nodemailer
           node fet.js
 
 
