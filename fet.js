@@ -3,15 +3,15 @@ const fs = require('fs');
 const path = require('path');
 let issueURL = 'https://github.com/jsdelivr/jsdelivr/issues/18393'
 async function test(){
-  let max = 1000
+  let max = 1
         for(let i=0;i<=max;i++){
     
             for(let j=0;j<=max;j++){
                 let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/debug-jsdelivr-2@1/data/${i}/${j}.json`
           let res = await fetch(url)
-          if(!res.ok){
+          if(res.ok){
           await sendMessage(process.env.username,process.env.password,'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL}`);
-          fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n')
+          //fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n')
           console.log('error url ',url)
           }
 
