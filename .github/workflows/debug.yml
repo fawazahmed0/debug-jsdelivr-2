@@ -1,0 +1,19 @@
+name: CI
+
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:   
+      # Partial clone
+      - name: clone
+        shell: bash
+        run: |
+          REPO="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone $REPO .
+          node gen.js
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m "generated"
+          git push
