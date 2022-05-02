@@ -30,7 +30,9 @@ jobs:
 
 
       - name: Running the command
-        run: node fet.js
+        run: |
+          npm install node-fetch@2
+          node fet.js
 
 
       # commiting and pushing changes
