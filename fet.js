@@ -12,6 +12,12 @@ async function test(){
           let res = await fetch(url)
           if(!res.ok){
           await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL}`);
+         
+          await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'dakulovgr@gmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL}`);
+       
+          await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL}`);
+       
+         
           fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n')
           console.log('error url ',url)
           }
