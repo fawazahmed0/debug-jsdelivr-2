@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require('nodemailer');
 let issueURL = 'https://github.com/jsdelivr/jsdelivr/issues/18393'
 async function test(){
   let max = 1
