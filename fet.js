@@ -11,7 +11,7 @@ async function test(){
                 let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/debug-jsdelivr-2@1/data/${i}/${j}.json`
           let res = await fetch(url)
           if(res.ok){
-          await sendMessage(process.env.username,process.env.password,'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL}`);
+          await sendMessage(process.env.username.trim(),process.env.password.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL}`);
           //fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n')
           console.log('error url ',url)
           }
