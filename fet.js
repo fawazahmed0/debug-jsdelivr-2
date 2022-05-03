@@ -9,13 +9,27 @@ async function test(){
     
             for(let j=0;j<=max;j++){
                 let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/debug-jsdelivr-2@1/data/${i}/${j}.json`
-          let res = await fetch(url)
-          if(!res.ok){
+                let res
+
+                for (let i = 0; i <= 5; i++) {
+                    try {
+                        res = await fetch(url)
+                        if (res.ok)
+                            break
+                    } catch (e) {
+                        await new Promise(r => setTimeout(r, 2000));
+                        console.error(e)
+                    }
+                }
+
+
+
+          if(res == undefined || !res.ok){
           await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
          
-          await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'dakulovgr@gmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
+          //await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'dakulovgr@gmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
        
-          await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
+          //await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
        
          
           fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n')
