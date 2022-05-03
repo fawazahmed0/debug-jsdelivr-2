@@ -8,10 +8,10 @@ async function test(){
     let curr = await fetch(`${apiURL}/currencies.json`).then(res=>res.json())
 
 
-    for(let value of Object.keys(curr)){
+    for(let value of shuffleArr(Object.keys(curr))){
         await testURL(`${apiURL}/currencies/${value}.json`)
         await testURL(`${apiURL}/currencies/${value}.min.json`)
-        for(let innervalue of Object.keys(curr)){
+        for(let innervalue of shuffleArr(Object.keys(curr))){
             await testURL(`${apiURL}/currencies/${value}/${innervalue}.json`)
             await testURL(`${apiURL}/currencies/${value}/${innervalue}.min.json`)
         }
@@ -20,6 +20,12 @@ async function test(){
     
     
     }
+
+function shuffleArr(arr){
+return arr.map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value)
+}
 
 async function testURL(url){
     let res
