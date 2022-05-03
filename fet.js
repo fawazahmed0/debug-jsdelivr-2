@@ -5,13 +5,13 @@ const nodemailer = require('nodemailer');
 let issueURL = 'https://github.com/jsdelivr/jsdelivr/issues/18393'
 async function test(){
   let max = 1000
-        for(let i=0;i<=max;i++){
+        for(let i=100;i<=max;i++){
     
             for(let j=0;j<=max;j++){
                 let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/debug-jsdelivr-2@1/data/${i}/${j}.json`
                 let res
 
-                for (let i = 0; i <= 5; i++) {
+                for (let k = 0; k <= 5; k++) {
                     try {
                         res = await fetch(url)
                         if (res.ok)
