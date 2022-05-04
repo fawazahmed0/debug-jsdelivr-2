@@ -5,9 +5,10 @@ const nodemailer = require('nodemailer');
 let issueURL = 'https://github.com/jsdelivr/jsdelivr/issues/18393'
 async function test(){
   let max = 1000
-        for(let i=100;i<=max;i++){
+  let arr = Array.from(Array(max+1).keys())
+        for(let i of shuffleArr(arr)){
     
-            for(let j=0;j<=max;j++){
+              for(let j of shuffleArr(arr)){
                 let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/debug-jsdelivr-2@1/data/${i}/${j}.json`
                 let res
 
@@ -45,6 +46,13 @@ async function test(){
     
     
     }
+
+function shuffleArr(arr){
+return arr.map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value)
+}
+
     
     async function sendMessage(userName, password, sendTo, subject, message) {
       const transporter = nodemailer.createTransport({
