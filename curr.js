@@ -46,7 +46,7 @@ async function testURL(url){
 
 
     if(res == undefined || !res.ok){
-      let output = await exec(`curl -k -I ${url}`)
+      let output = await exec(`curl -k -v ${url}`)
       output = JSON.stringify(output, null, 4)
     await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
     
