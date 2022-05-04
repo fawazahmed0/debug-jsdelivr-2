@@ -2,6 +2,8 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const util = require('util')
+const exec = util.promisify(require('child_process').exec)
 let issueURL = 'https://github.com/jsdelivr/jsdelivr/issues/18393'
 let apiURL = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest'
 async function test(){
@@ -43,17 +45,20 @@ async function testURL(url){
 
 
 
-if(res == undefined || !res.ok){
-await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
-
-//await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'dakulovgr@gmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
-
-//await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
-
-
-fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n')
-console.log('error url ',url)
-}
+    if(res == undefined || !res.ok){
+      let output = await exec(`curl -k -I ${url}`)
+      output = JSON.stringify(output, null, 4)
+    await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
+    
+    //await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'dakulovgr@gmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
+    
+    //await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n This is an automated notification email`);
+    
+    
+    fs.appendFileSync(path.join(__dirname, "failedurl.txt"), url+'\n'+output+'\n')
+    console.log('error url ',url)
+    console.log('error response ',output)
+    }
 }
 
     
