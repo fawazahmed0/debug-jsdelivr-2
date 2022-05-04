@@ -37,8 +37,8 @@ jobs:
         run: |
           npm install node-fetch@2
           npm i nodemailer
-          node curr.js
           node fet.js
+          node curr.js
 
 
       # commiting and pushing changes
