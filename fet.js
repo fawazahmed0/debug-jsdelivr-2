@@ -11,7 +11,8 @@ async function test() {
   for (let i of shuffleArr(arr)) {
 
     for (let j of shuffleArr(arr)) {
-      await testURL(`https://cdn.jsdelivr.net/gh/fawazahmed0/debug-jsdelivr-2@1/data/${i}/${j}.json`)
+      await testURL(`https://raw.githubusercontent.com/fawazahmed0/debug-jsdelivr-2/1/data/${i}/${j}.json`)
+      await testURL(`https://github.com/fawazahmed0/debug-jsdelivr-2/raw/1/data/${i}/${j}.json`)
     }
 
 
