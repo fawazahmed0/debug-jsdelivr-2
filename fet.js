@@ -49,7 +49,7 @@ if(res == undefined || !res.ok){
   output = JSON.stringify(output, null, 4)
 await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
 
-  await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
+ // await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
 
  //  await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'dakulovgr@gmail.com', 'JSDelivr URL Failed', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
 
