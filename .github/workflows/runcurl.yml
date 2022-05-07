@@ -35,6 +35,7 @@ jobs:
 
       - name: Running the command
         run: |
+          npm install
           npm i nodemailer
           node curltest.js
 
