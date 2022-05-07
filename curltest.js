@@ -34,7 +34,7 @@ async function testURL(url){
     console.error(error)
     let output = util.inspect(error)
     await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'fawazahmed0@hotmail.com', 'JSDelivr URL Failed - CURL', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
-   // await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed - CURL', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
+    await sendMessage(process.env.userdata.trim(),process.env.passdata.trim(),'martin@kolarik.sk', 'JSDelivr URL Failed - CURL', `Failed url ${url}\n Refer ${issueURL} \n ${output} \n This is an automated notification email`);
   }
   
 
