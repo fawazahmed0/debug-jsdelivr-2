@@ -5,7 +5,7 @@ name: curlfailedurls
 on:
   schedule:
     - cron: '0 */6 * * *'
-    
+
   workflow_dispatch:
 
 env: # Or as an environment variable
@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-12
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
